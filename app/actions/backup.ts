@@ -41,20 +41,13 @@ export async function clearSecondaryData(resetCounter: boolean = false) {
     throw new Error('No tienes permisos')
   }
 
-  // Eliminar datos
-  await supabase.from('order_items').delete().neq('id', '00000000-0000-0000-0000-000000000000')
-  await supabase.from('orders').delete().neq('id', '00000000-0000-0000-0000-000000000000')
-  await supabase.from('production_batches').delete().neq('id', '00000000-0000-0000-0000-000000000000')
+  // Usar RPC function para bypass RLS
+  const { error } = await supabase.rpc('clear_backup_data', { 
+    reset_counter: resetCounter 
+  })
 
-  // Resetear contador si se solicita
-  if (resetCounter) {
-    await supabase
-      .from('counters')
-      .update({ current_value: 0 })
-      .eq('id', 'batch_counter')
-  }
+  if (error) throw error
 
-  // Revalidar todas las rutas afectadas
   revalidatePath('/admin/respaldos')
   revalidatePath('/ventas')
   revalidatePath('/produccion')

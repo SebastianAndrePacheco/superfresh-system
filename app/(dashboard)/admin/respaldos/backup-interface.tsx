@@ -2,14 +2,12 @@
 
 import { getBackupData, clearSecondaryData } from '@/app/actions/backup'
 import { useState } from 'react'
-import { useRouter } from 'next/navigation'
 import * as XLSX from 'xlsx'
 
 export default function BackupInterface() {
   const [loading, setLoading] = useState(false)
   const [step, setStep] = useState<'initial' | 'downloaded' | 'cleared'>('initial')
   const [resetCounter, setResetCounter] = useState(false)
-  const router = useRouter()
 
   const handleDownloadBackup = async () => {
     setLoading(true)
@@ -83,16 +81,10 @@ export default function BackupInterface() {
     setLoading(true)
     try {
       await clearSecondaryData(resetCounter)
-      setStep('cleared')
-      
-      // Forzar recarga después de 1 segundo
-      setTimeout(() => {
-        router.refresh()
-        window.location.href = '/admin/respaldos'
-      }, 1000)
+      alert('✓ Datos eliminados correctamente. La página se recargará.')
+      window.location.reload()
     } catch (error: any) {
       alert(error.message)
-    } finally {
       setLoading(false)
     }
   }
@@ -140,7 +132,7 @@ export default function BackupInterface() {
               <div>
                 <span className="text-white font-medium">Resetear numeración de lotes a LOTE-0001</span>
                 <p className="text-sm text-gray-400">
-                  Si no marcas esto, la numeración continuará (ej: si el último fue LOTE-0025, el siguiente será LOTE-0026)
+                  Si no marcas esto, la numeración continuará
                 </p>
               </div>
             </label>
@@ -150,20 +142,13 @@ export default function BackupInterface() {
         <div className={`p-4 rounded-lg border ${
           step === 'downloaded' 
             ? 'bg-red-900/20 border-red-800' 
-            : step === 'cleared'
-            ? 'bg-green-900/20 border-green-800'
             : 'bg-gray-800/50 border-gray-700'
         }`}>
           <div className="flex items-center justify-between">
             <div>
-              <h3 className="font-semibold text-white">
-                {step === 'cleared' ? '✓ Base de Datos Limpiada' : '2. Limpiar Base de Datos'}
-              </h3>
+              <h3 className="font-semibold text-white">2. Limpiar Base de Datos</h3>
               <p className="text-sm text-gray-400 mt-1">
-                {step === 'cleared' 
-                  ? 'Todos los datos secundarios fueron eliminados. Recargando...'
-                  : 'Elimina todos los pedidos y lotes (mantiene productos, clientes y usuarios)'
-                }
+                Elimina todos los pedidos y lotes (mantiene productos, clientes y usuarios)
               </p>
             </div>
             {step === 'downloaded' && (
@@ -177,14 +162,6 @@ export default function BackupInterface() {
             )}
           </div>
         </div>
-
-        {step === 'cleared' && (
-          <div className="p-4 bg-green-900/20 border border-green-800 rounded-lg">
-            <p className="text-green-400 text-center font-medium">
-              ✓ Proceso completado. Recargando página...
-            </p>
-          </div>
-        )}
       </div>
     </div>
   )

@@ -5,27 +5,27 @@ import { ProductionBatch } from '@/types'
 export default function InventoryTable({ batches }: { batches: ProductionBatch[] }) {
   return (
     <div className="overflow-x-auto">
-      <table className="min-w-full divide-y divide-gray-200">
-        <thead className="bg-gray-50">
+      <table className="min-w-full divide-y divide-gray-800">
+        <thead className="bg-gray-800">
           <tr>
-            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Código Lote</th>
-            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Producto</th>
-            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Fecha Producción</th>
-            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Producido</th>
-            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Disponible</th>
-            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Estado</th>
+            <th className="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">Código Lote</th>
+            <th className="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">Producto</th>
+            <th className="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">Fecha Producción</th>
+            <th className="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">Producido</th>
+            <th className="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">Disponible</th>
+            <th className="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">Estado</th>
           </tr>
         </thead>
-        <tbody className="bg-white divide-y divide-gray-200">
+        <tbody className="bg-gray-900 divide-y divide-gray-800">
           {batches.map((batch) => (
-            <tr key={batch.id}>
-              <td className="px-6 py-4 whitespace-nowrap font-mono text-sm">{batch.batch_code}</td>
-              <td className="px-6 py-4 whitespace-nowrap">{batch.products?.name}</td>
-              <td className="px-6 py-4 whitespace-nowrap">{new Date(batch.production_date).toLocaleDateString('es-PE')}</td>
-              <td className="px-6 py-4 whitespace-nowrap">{batch.quantity_produced}</td>
-              <td className="px-6 py-4 whitespace-nowrap font-semibold">{batch.quantity_available}</td>
+            <tr key={batch.id} className="hover:bg-gray-800/50 transition">
+              <td className="px-6 py-4 whitespace-nowrap font-mono text-sm text-blue-400">{batch.batch_code}</td>
+              <td className="px-6 py-4 whitespace-nowrap text-white">{batch.products?.name}</td>
+              <td className="px-6 py-4 whitespace-nowrap text-gray-300">{new Date(batch.production_date).toLocaleDateString('es-PE')}</td>
+              <td className="px-6 py-4 whitespace-nowrap text-gray-300">{batch.quantity_produced}</td>
+              <td className="px-6 py-4 whitespace-nowrap font-semibold text-white">{batch.quantity_available}</td>
               <td className="px-6 py-4 whitespace-nowrap">
-                <span className={`px-2 py-1 text-xs rounded-full ${batch.quantity_available > 0 ? 'bg-green-100 text-green-800' : 'bg-gray-100 text-gray-800'}`}>
+                <span className={`px-2 py-1 text-xs rounded-full font-medium ${batch.quantity_available > 0 ? 'bg-green-900/50 text-green-400 border border-green-800' : 'bg-gray-800 text-gray-400 border border-gray-700'}`}>
                   {batch.quantity_available > 0 ? 'Disponible' : 'Agotado'}
                 </span>
               </td>

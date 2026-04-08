@@ -20,15 +20,15 @@ export default async function ProduccionPage() {
 
   return (
     <div className="space-y-6">
-      <h1 className="text-2xl font-bold">Control de Producción</h1>
+      <h1 className="text-2xl font-bold text-white">Control de Producción</h1>
       
-      <div className="bg-white shadow rounded-lg p-6">
-        <h2 className="text-lg font-semibold mb-4">Registrar Lote de Producción</h2>
+      <div className="bg-gray-900 shadow-xl rounded-lg p-6 border border-gray-800">
+        <h2 className="text-lg font-semibold mb-4 text-white">Registrar Lote de Producción</h2>
         <ProductionForm products={products as Product[] || []} />
       </div>
 
-      <div className="bg-white shadow rounded-lg p-6">
-        <h2 className="text-lg font-semibold mb-4">Inventario Actual</h2>
+      <div className="bg-gray-900 shadow-xl rounded-lg p-6 border border-gray-800">
+        <h2 className="text-lg font-semibold mb-4 text-white">Inventario Actual</h2>
         <InventoryTable batches={batches as ProductionBatch[] || []} />
       </div>
     </div>

@@ -20,15 +20,15 @@ export default async function VentasPage() {
 
   return (
     <div className="space-y-6">
-      <h1 className="text-2xl font-bold">Registro de Ventas</h1>
+      <h1 className="text-2xl font-bold text-white">Registro de Ventas</h1>
       
-      <div className="bg-white shadow rounded-lg p-6">
-        <h2 className="text-lg font-semibold mb-4">Nuevo Pedido</h2>
+      <div className="bg-gray-900 shadow-xl rounded-lg p-6 border border-gray-800">
+        <h2 className="text-lg font-semibold mb-4 text-white">Nuevo Pedido</h2>
         <OrderForm products={products as Product[] || []} />
       </div>
 
-      <div className="bg-white shadow rounded-lg p-6">
-        <h2 className="text-lg font-semibold mb-4">Pedidos Recientes</h2>
+      <div className="bg-gray-900 shadow-xl rounded-lg p-6 border border-gray-800">
+        <h2 className="text-lg font-semibold mb-4 text-white">Pedidos Recientes</h2>
         <OrderList orders={orders as Order[] || []} />
       </div>
     </div>

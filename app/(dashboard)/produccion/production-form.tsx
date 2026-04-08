@@ -21,7 +21,7 @@ export default function ProductionForm({ products }: { products: Product[] }) {
       <select
         name="product_id"
         required
-        className="px-3 py-2 border border-gray-300 rounded-md"
+        className="px-3 py-2 bg-gray-800 border border-gray-700 rounded-md text-white focus:outline-none focus:ring-2 focus:ring-green-500"
       >
         <option value="">Seleccionar producto</option>
         {products.map((product) => (
@@ -37,7 +37,7 @@ export default function ProductionForm({ products }: { products: Product[] }) {
         min="1"
         placeholder="Cantidad producida"
         required
-        className="px-3 py-2 border border-gray-300 rounded-md"
+        className="px-3 py-2 bg-gray-800 border border-gray-700 rounded-md text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-green-500"
       />
       
       <input
@@ -45,13 +45,13 @@ export default function ProductionForm({ products }: { products: Product[] }) {
         type="date"
         required
         defaultValue={new Date().toISOString().split('T')[0]}
-        className="px-3 py-2 border border-gray-300 rounded-md"
+        className="px-3 py-2 bg-gray-800 border border-gray-700 rounded-md text-white focus:outline-none focus:ring-2 focus:ring-green-500"
       />
       
       <button
         type="submit"
         disabled={loading}
-        className="px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 disabled:opacity-50"
+        className="px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 disabled:opacity-50 transition font-medium"
       >
         {loading ? 'Registrando...' : 'Registrar Lote'}
       </button>

@@ -31,13 +31,13 @@ export default function OrderForm({ products }: { products: Product[] }) {
           name="customer_name"
           placeholder="Nombre del cliente"
           required
-          className="px-3 py-2 border border-gray-300 rounded-md"
+          className="px-3 py-2 bg-gray-800 border border-gray-700 rounded-md text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500"
         />
         
         <input
           name="customer_phone"
           placeholder="Teléfono (opcional)"
-          className="px-3 py-2 border border-gray-300 rounded-md"
+          className="px-3 py-2 bg-gray-800 border border-gray-700 rounded-md text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500"
         />
         
         <input
@@ -45,13 +45,13 @@ export default function OrderForm({ products }: { products: Product[] }) {
           type="date"
           required
           defaultValue={new Date().toISOString().split('T')[0]}
-          className="px-3 py-2 border border-gray-300 rounded-md"
+          className="px-3 py-2 bg-gray-800 border border-gray-700 rounded-md text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
         />
         
         <select
           name="product_id"
           required
-          className="px-3 py-2 border border-gray-300 rounded-md"
+          className="px-3 py-2 bg-gray-800 border border-gray-700 rounded-md text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
         >
           <option value="">Seleccionar producto</option>
           {products.map((product) => (
@@ -67,20 +67,20 @@ export default function OrderForm({ products }: { products: Product[] }) {
           min="1"
           placeholder="Cantidad"
           required
-          className="px-3 py-2 border border-gray-300 rounded-md"
+          className="px-3 py-2 bg-gray-800 border border-gray-700 rounded-md text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500"
         />
         
         <button
           type="submit"
           disabled={loading}
-          className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 disabled:opacity-50"
+          className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 disabled:opacity-50 transition font-medium"
         >
           {loading ? 'Creando...' : 'Crear Pedido'}
         </button>
       </form>
       
       {error && (
-        <div className="mt-4 p-3 bg-red-50 border border-red-200 rounded-md text-red-800 text-sm">
+        <div className="mt-4 p-3 bg-red-900/20 border border-red-800 rounded-md text-red-400 text-sm">
           {error}
         </div>
       )}

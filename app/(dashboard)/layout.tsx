@@ -26,6 +26,8 @@ export default async function DashboardLayout({
     redirect('/login')
   }
 
+  const isAdmin = profile?.role === 'admin'
+
   return (
     <div className="min-h-screen bg-gray-950">
       <nav className="bg-gray-900 shadow-lg border-b border-gray-800">
@@ -36,26 +38,43 @@ export default async function DashboardLayout({
                 <h1 className="text-xl font-bold text-white">Superfresh</h1>
               </div>
               <div className="hidden sm:ml-6 sm:flex sm:space-x-8">
-                <a href="/admin/dashboard" className="inline-flex items-center px-1 pt-1 text-sm font-medium text-gray-300 hover:text-white transition">
-                  Dashboard
-                </a>
-                <a href="/admin/productos" className="inline-flex items-center px-1 pt-1 text-sm font-medium text-gray-300 hover:text-white transition">
-                  Productos
-                </a>
-                <a href="/admin/clientes" className="inline-flex items-center px-1 pt-1 text-sm font-medium text-gray-300 hover:text-white transition">
-                  Clientes
-                </a>
+                {isAdmin && (
+                  <a href="/admin/dashboard" className="inline-flex items-center px-1 pt-1 text-sm font-medium text-gray-300 hover:text-white transition">
+                    Dashboard
+                  </a>
+                )}
+                {isAdmin && (
+                  <a href="/admin/productos" className="inline-flex items-center px-1 pt-1 text-sm font-medium text-gray-300 hover:text-white transition">
+                    Productos
+                  </a>
+                )}
+                {isAdmin && (
+                  <a href="/admin/clientes" className="inline-flex items-center px-1 pt-1 text-sm font-medium text-gray-300 hover:text-white transition">
+                    Clientes
+                  </a>
+                )}
                 <a href="/produccion" className="inline-flex items-center px-1 pt-1 text-sm font-medium text-gray-300 hover:text-white transition">
                   Producción
                 </a>
                 <a href="/ventas" className="inline-flex items-center px-1 pt-1 text-sm font-medium text-gray-300 hover:text-white transition">
                   Ventas
                 </a>
+                {isAdmin && (
+                  <a href="/admin/usuarios" className="inline-flex items-center px-1 pt-1 text-sm font-medium text-gray-300 hover:text-white transition">
+                    Usuarios
+                  </a>
+                )}
               </div>
             </div>
             <div className="flex items-center space-x-4">
               <span className="text-sm text-gray-300">{profile?.full_name}</span>
-              <span className="text-xs text-gray-500 uppercase bg-gray-800 px-2 py-1 rounded">{profile?.role}</span>
+              <span className={`text-xs uppercase px-2 py-1 rounded font-medium ${
+                isAdmin 
+                  ? 'bg-purple-900/50 text-purple-400 border border-purple-800' 
+                  : 'bg-blue-900/50 text-blue-400 border border-blue-800'
+              }`}>
+                {profile?.role}
+              </span>
               <form action={handleSignOut}>
                 <button type="submit" className="text-sm text-red-400 hover:text-red-300 transition">
                   Salir

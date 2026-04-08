@@ -21,7 +21,7 @@ export default function ProductForm() {
         name="name"
         placeholder="Nombre del producto"
         required
-        className="px-3 py-2 border border-gray-300 rounded-md"
+        className="px-3 py-2 bg-gray-800 border border-gray-700 rounded-md text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500"
       />
       <input
         name="unit_price"
@@ -29,18 +29,18 @@ export default function ProductForm() {
         step="0.01"
         placeholder="Precio unitario"
         required
-        className="px-3 py-2 border border-gray-300 rounded-md"
+        className="px-3 py-2 bg-gray-800 border border-gray-700 rounded-md text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500"
       />
       <input
         name="unit_measure"
         placeholder="Unidad (kg, unidad, etc.)"
         required
-        className="px-3 py-2 border border-gray-300 rounded-md"
+        className="px-3 py-2 bg-gray-800 border border-gray-700 rounded-md text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500"
       />
       <button
         type="submit"
         disabled={loading}
-        className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 disabled:opacity-50"
+        className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 disabled:opacity-50 transition font-medium"
       >
         {loading ? 'Creando...' : 'Crear Producto'}
       </button>

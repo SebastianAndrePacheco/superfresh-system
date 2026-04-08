@@ -64,6 +64,11 @@ export default async function DashboardLayout({
                     Usuarios
                   </a>
                 )}
+                {isAdmin && (
+                  <a href="/admin/respaldos" className="inline-flex items-center px-1 pt-1 text-sm font-medium text-gray-300 hover:text-white transition">
+                    Respaldos
+                  </a>
+                )}
               </div>
             </div>
             <div className="flex items-center space-x-4">

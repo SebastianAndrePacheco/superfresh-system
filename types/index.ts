@@ -51,3 +51,20 @@ export interface OrderItem {
   subtotal: number
   created_at: string
 }
+
+export interface Customer {
+  id: string
+  name: string
+  phone: string | null
+  email: string | null
+  address: string | null
+  tax_id: string | null
+  notes: string | null
+  is_active: boolean
+  created_at: string
+}
+
+export interface OrderWithItems extends Order {
+  order_items?: (OrderItem & { products?: Product })[]
+  customers?: Customer
+}

@@ -36,8 +36,14 @@ export default async function DashboardLayout({
                 <h1 className="text-xl font-bold text-white">Superfresh</h1>
               </div>
               <div className="hidden sm:ml-6 sm:flex sm:space-x-8">
+                <a href="/admin/dashboard" className="inline-flex items-center px-1 pt-1 text-sm font-medium text-gray-300 hover:text-white transition">
+                  Dashboard
+                </a>
                 <a href="/admin/productos" className="inline-flex items-center px-1 pt-1 text-sm font-medium text-gray-300 hover:text-white transition">
                   Productos
+                </a>
+                <a href="/admin/clientes" className="inline-flex items-center px-1 pt-1 text-sm font-medium text-gray-300 hover:text-white transition">
+                  Clientes
                 </a>
                 <a href="/produccion" className="inline-flex items-center px-1 pt-1 text-sm font-medium text-gray-300 hover:text-white transition">
                   Producción
